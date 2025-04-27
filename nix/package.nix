@@ -34,7 +34,7 @@ buildNpmPackage rec {
   # The node_modules/XXX is such that XXX is the "name" in package.json
   # The path might differ, for instance in electron-forge you need build/main/main.js
   postInstall = ''
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} 
-      # --add-flags $out/lib/node_modules/${pname}/src/main.ts
+    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
+      --add-flags $out/lib/node_modules/${pname}/src/main.ts
   '';
 }
