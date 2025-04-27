@@ -6,10 +6,10 @@
   electron,
 }:
 buildNpmPackage rec {
-  pname = "deezer-enchanced";
+  pname = "deezer-enhanced";
   version = "1.3.0";
 
-  src = ./.;
+  src = ../.;
 
   npmDepsHash = "sha256-FiVQhUoifrjy3ZOkPHZb/xy0ik3st/fIktRuPinItxQ="; # you will get an error about mismatching hash the first time. Just copy the hash here
 
@@ -34,7 +34,7 @@ buildNpmPackage rec {
   # The node_modules/XXX is such that XXX is the "name" in package.json
   # The path might differ, for instance in electron-forge you need build/main/main.js
   postInstall = ''
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
-      --add-flags $out/lib/node_modules/${pname}/src/main.ts
+    makeWrapper ${electron}/bin/electron $out/bin/${pname} 
+      # --add-flags $out/lib/node_modules/${pname}/src/main.ts
   '';
 }
